@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Carwash - Gestión de Clientes</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <link rel="stylesheet" href="gestion.css" />
+  <!-- Fuente Inter para un diseño moderno -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- MODULAR Firebase SDK Imports - ¡IMPORTANTE! -->
+  <script type="module" src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
+  <script type="module" src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js"></script>
+  <script type="module" src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+  <script type="module" defer src="gestion.js"></script> <!-- Asegúrate de que gestion.js se cargue como un módulo -->
+</head>
+<body>
+  <div class="bubbles">
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+    <!-- Puedes añadir más <span> aquí si quieres aún más burbujas, hasta 15 o más según tu CSS -->
+  </div>
+
+  <div class="container">
+    <header class="encabezado">
+      <img src="los canches.jpg" alt="Logo Los Canches Carwash" class="logo" />
+      <h1>¡Bienvenido a Los Canches Carwash! 🧽</h1>
+    </header>
+
+    <div class="nav">
+      <button onclick="showSection('insertar')">🚘 Insertar Cliente</button>
+      <button onclick="showSection('buscar')">🔍 Buscar Cliente</button>
+    </div>
+
+    <section id="insertar" class="seccion">
+      <h2>Registrar Nuevo Cliente</h2>
+      <input type="text" id="nombre" placeholder="Nombre completo" />
+      <input type="text" id="telefono" placeholder="Número de teléfono" />
+      <input type="text" id="placa" placeholder="Número de placa" />
+      <input type="text" id="carNumber" placeholder="Número de Carro" /> <!-- Campo para el número de carro manual -->
+      <button onclick="insertarCliente()">💾 Guardar Cliente</button>
+    </section>
+
+    <section id="buscar" class="seccion hidden">
+      <h2>Buscar Cliente</h2>
+      <input type="text" id="criterio" placeholder="Buscar por nombre, placa o número de carro" />
+      <button onclick="buscarCliente()">🔎 Buscar</button>
+      <div id="resultado"></div>
+    </section>
+
+    <div id="toast" class="toast"></div> <!-- El mensaje del toast se actualizará dinámicamente desde JS -->
+  </div>
+</body>
+</html>
